@@ -9,20 +9,26 @@ export class App extends Component {
     super(props);
     this.state = {
       urls: []
+
     }
   }
 
-  componentDidMount() {
+  async componentDidMount () {
+    try {
+      const urlsList = await getUrls()
+      this.setState({urls: urlsList.urls})
+    } catch (error) {
+      this.setState({error: error})
+    }
   }
 
   render() {
     return (
-      <main className="App">
+        <main className="App">
         <header>
           <h1>URL Shortener</h1>
           <UrlForm />
         </header>
-
         <UrlContainer urls={this.state.urls}/>
       </main>
     );
