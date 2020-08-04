@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { getUrls } from '../../apiCalls';
+import { getUrls, deleteUrl } from '../../apiCalls';
 import UrlContainer from '../UrlContainer/UrlContainer';
 import UrlForm from '../UrlForm/UrlForm';
 
@@ -11,6 +11,10 @@ export class App extends Component {
       urls: []
 
     }
+  }
+
+  removeUrlFromState() {
+
   }
 
   async componentDidMount () {
@@ -24,10 +28,10 @@ export class App extends Component {
 
   render() {
     return (
-        <main className="App">
-        <header>
-          <h1>URL Shortener</h1>
-          <UrlForm />
+        <main data-testid="App" className="App">
+        <header data-testid="header">
+          <h1 data-testid="title">URL Shortener</h1>
+          <UrlForm  />
         </header>
         <UrlContainer urls={this.state.urls}/>
       </main>

@@ -1,7 +1,11 @@
 import React from 'react';
-import UrlContainer from './UrlContainer/UrlContainer';
+import UrlContainer from '../UrlContainer/UrlContainer';
 import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
+import '@testing-library/jest-dom';
+
+
+
 
 describe('UrlContainer', () => {
 
@@ -20,16 +24,21 @@ describe('UrlContainer', () => {
     )
     urlContainer = (
       <MemoryRouter>
-        <urlContainer  urls={urls}/>
+        <UrlContainer  urls={urls}/>
       </MemoryRouter>
     )
   })
 
   it('should render the UrlContainer to the page', () => {
     const { getByTestId, getByText } = render(urlContainer)
-    // const title = getByText("otherthing")
-    // const urlContainerElem = getByTestId('anchor-tag')
+    const urlContainerElem = getByTestId('anchor-tag')
+    const title = getByText("otherthing")
+    const anchorTag = getByTestId("anchor-tag")
+    const longUrl = getByTestId("long-url")
 
-
+    expect(urlContainerElem).toBeInTheDocument()
+    expect(title).toBeInTheDocument()
+    expect(anchorTag).toBeInTheDocument()
+    expect(longUrl).toBeInTheDocument()
   })
 })

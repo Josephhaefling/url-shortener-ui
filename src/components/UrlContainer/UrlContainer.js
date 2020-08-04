@@ -8,6 +8,7 @@ const UrlContainer = props => {
         <h3>{url.title}</h3>
         <a data-testid="anchor-tag" href={url.short_url} target="blank">{url.short_url}</a>
         <p data-testid="long-url">{url.long_url}</p>
+        <button>Delete Me!</button>
       </div>
     )
   });

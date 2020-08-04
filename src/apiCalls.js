@@ -19,3 +19,7 @@ export const postUrls = (url, title) => {
           }
       ).then(response => response.json())
 }
+
+export const deleteUrl = () => {
+  return fetch('/api/v1/urls/:url_id').then(response => response.json())
+}

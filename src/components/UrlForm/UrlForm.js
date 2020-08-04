@@ -19,9 +19,7 @@ class UrlForm extends Component {
   handleSubmit = async (e) => {
     const { title, urlToShorten } = this.state
     e.preventDefault();
-    console.log(this.props);
     const newUrls = await postUrls(urlToShorten, title)
-    console.log(newUrls);
     this.clearInputs();
   }
 
@@ -32,8 +30,9 @@ class UrlForm extends Component {
 
   render() {
     return (
-      <form>
+      <form data-testid="form">
         <input
+          data-testid="title-input"
           type='text'
           placeholder='Title...'
           name='title'
@@ -42,6 +41,7 @@ class UrlForm extends Component {
         />
 
         <input
+          data-testid="url-input"
           type='text'
           placeholder='URL to Shorten...'
           name='urlToShorten'
